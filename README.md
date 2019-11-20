@@ -1,32 +1,32 @@
 # S3Bucket
 
-[![Gem Version](https://badge.fury.io/rb/GEMNAME.png)](http://badge.fury.io/rb/GEMNAME)
-[![CircleCI](https://circleci.com/gh/USER/REPO.svg?style=svg)](https://circleci.com/gh/USER/REPO)
-[![Dependency Status](https://gemnasium.com/USER/REPO.png)](https://gemnasium.com/USER/REPO)
-[![Coverage Status](https://coveralls.io/repos/USER/REPO/badge.png)](https://coveralls.io/r/USER/REPO)
-[![Join the chat at https://gitter.im/USER/REPO](https://badges.gitter.im/USER/REPO.svg)](https://gitter.im/USER/REPO?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Support](https://img.shields.io/badge/get-support-blue.svg)](https://boltops.com?utm_source=badge&utm_medium=badge&utm_campaign=s3-bucket)
+[![Gem Version](https://badge.fury.io/rb/s3-bucket.png)](http://badge.fury.io/rb/s3-bucket)
 
-TODO: Write a gem description
+The s3-bucket tool can be used to harden your s3 bucket security posture. It currently supports:
+
+* enabling encryption
+* adding an enforce ssl bucket policy.
 
 ## Usage
 
-    s3-bucket hello yourname
-    s3-bucket sub:goodbye yourname
+You can use the list subcommands to list the current settings.
 
-The CLI tool also detects and tasks in the current folder's Rakefile and delegate to those tasks.
+    s3-bucket list encryption
+    s3-bucket list policy
+
+Then you can enable encryption or add an bucket policy to ensure that https is used to access s3 urls.
+
+    s3-bucket enable encryption BUCKET
+    s3-bucket enable ensure-https BUCKET
+
+To enable multiple buckets use the `enable-all` command:
+
+    s3-bucket enable-all encryption FILE
+    s3-bucket enable-all ensure-https FILE
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-    gem "s3-bucket"
-
-And then execute:
-
-    bundle
-
-Or install it yourself as:
+Install with the `gem` command:
 
     gem install s3-bucket
 
