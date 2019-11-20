@@ -4,16 +4,33 @@ module S3Bucket
   module AwsServices
     extend Memoist
 
-    def s3
-      Aws::S3::Client.new(s3_options)
-    end
-    memoize :s3
+    @@buckets = {} # holds bucket => region map
+    def get_s3_regional_client(bucket)
+      region = @@buckets[bucket]
 
-    def s3_options
-      options = {}
-      options[:endpoint] = "https://s3.#{@options[:region]}.amazonaws.com" if @options[:region]
-      options[:region] = @options[:region] if @options[:region]
-      options
+      unless region
+        resp = s3_client.get_bucket_location(bucket: bucket)
+        region = resp.location_constraint
+        region = 'us-east-1' if region.empty? # "" means us-east-1
+      end
+
+      s3_regional_client(region)
     end
+
+    def s3_regional_client(region=nil)
+      options = {}
+      options[:endpoint] = "https://s3.#{region}.amazonaws.com" if region
+      options[:region] = region if region
+      Aws::S3::Client.new(options)
+    end
+    memoize :s3_regional_client
+
+    # Generic s3 client. Will be configured to whatever region user has locally configured in ~/.aws/config
+    # Used to call get_bucket_location to get each specific bucket's location.
+    # Generally use the s3_regional_client instead of this.
+    def s3_client
+      Aws::S3::Client.new
+    end
+    memoize :s3_client
   end
 end

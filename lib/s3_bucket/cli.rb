@@ -5,7 +5,6 @@ module S3Bucket
 
     desc "list", "List bucket policies"
     long_desc Help.text(:list)
-    option :region, desc: "AWS Region. Sets the s3 endpoint to use."
     def list
       List.new(options).run
     end
