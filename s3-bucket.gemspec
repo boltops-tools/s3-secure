@@ -8,10 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = S3Bucket::VERSION
   spec.authors       = ["Tung Nguyen"]
   spec.email         = ["tongueroo@gmail.com"]
-  spec.summary       = "Generated with cli-template tool. Please write a gem summary"
-  spec.description   = "Generated with cli-template tool. Write a longer description or delete this line."
-  spec.homepage      = "https://github.com/USERNAME/s3-bucket" # TODO: changeme
-  spec.license       = ""
+  spec.summary       = "S3 Bucket security hardening tool"
+  spec.homepage      = "https://github.com/tongueroo/s3-bucket" # TODO: changeme
+  spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
   spec.bindir        = "exe"
@@ -20,6 +19,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "activesupport"
+  spec.add_dependency "aws-sdk-s3"
+  spec.add_dependency "memoist"
   spec.add_dependency "rainbow"
   spec.add_dependency "thor"
   spec.add_dependency "zeitwerk"
