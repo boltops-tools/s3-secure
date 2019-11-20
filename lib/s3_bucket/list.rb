@@ -5,5 +5,11 @@ module S3Bucket
     def policy
       Policy.new(options).run
     end
+
+    desc "encryption", "List bucket encryptions"
+    long_desc Help.text(:encryption)
+    def encryption
+      Encryption.new(options).run
+    end
   end
 end

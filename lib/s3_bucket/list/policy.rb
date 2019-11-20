@@ -1,14 +1,5 @@
-require "json"
-
 class S3Bucket::List
-  class Policy
-    include S3Bucket::AwsServices
-    extend Memoist
-
-    def initialize(options)
-      @options = options
-    end
-
+  class Policy < Base
     def run
       buckets.each do |bucket|
         @s3 = get_s3_regional_client(bucket)
@@ -29,11 +20,5 @@ class S3Bucket::List
       JSON.pretty_generate(data)
     rescue Aws::S3::Errors::NoSuchBucketPolicy
     end
-
-    def buckets
-      resp = s3_client.list_buckets
-      resp.buckets.map(&:name)
-    end
-    memoize :buckets
   end
 end
