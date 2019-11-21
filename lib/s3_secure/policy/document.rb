@@ -3,8 +3,8 @@ class S3Secure::Policy
     extend Memoist
     include ForceSsl
 
-    def initialize(bucket_policy)
-      @bucket_policy = bucket_policy # existing document policy
+    def initialize(bucket, bucket_policy)
+      @bucket, @bucket_policy = bucket, bucket_policy # existing document policy
     end
 
     # Returns JSON text

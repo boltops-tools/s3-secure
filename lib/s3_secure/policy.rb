@@ -12,16 +12,16 @@ module S3Secure
       Show.new(options.merge(bucket: bucket)).run
     end
 
-    desc "enable BUCKET", "enable bucket policy"
-    long_desc Help.text("policy/enable")
-    def enable(bucket)
-      Enable.new(options.merge(bucket: bucket)).run
+    desc "enforce_ssl BUCKET", "Add enforce ssl bucket policy"
+    long_desc Help.text("policy/enforce_ssl")
+    def enforce_ssl(bucket)
+      Enforce.new(options.merge(bucket: bucket, sid: "ForceSslOnlyAccess")).run
     end
 
-    desc "disable BUCKET", "disable bucket policy"
-    long_desc Help.text("policy/disable")
-    def disable(bucket)
-      Disable.new(options.merge(bucket: bucket)).run
+    desc "unforce_ssl BUCKET", "Remove enforce ssl bucket policy"
+    long_desc Help.text("policy/unforce_ssl")
+    def unforce_ssl(bucket)
+      Unforce.new(options.merge(bucket: bucket, sid: "ForceSslOnlyAccess")).run
     end
   end
 end

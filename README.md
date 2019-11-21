@@ -20,8 +20,8 @@ Summary of policy commands:
 
     s3-secure policy list
     s3-secure policy show BUCKET
-    s3-secure policy enable-https BUCKET
-    s3-secure policy disable-https BUCKET
+    s3-secure policy enforce_ssl BUCKET
+    s3-secure policy unforce_ssl BUCKET
 
 ## Batch Commands
 
@@ -29,8 +29,8 @@ There are some batch commands:
 
     s3-secure encryption batch enable FILE.txt
     s3-secure encryption batch disable FILE.txt
-    s3-secure policy batch enable-https FILE.txt
-    s3-secure policy batch disable-https FILE.txt
+    s3-secure policy batch enforce_ssl FILE.txt
+    s3-secure policy batch unforce_ssl FILE.txt
 
 The format of FILE.txt is a list of bucket names separated by newlines.  Example:
 
