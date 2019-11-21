@@ -6,22 +6,22 @@ module S3Bucket
       List.new(options).run
     end
 
-    desc "show", "show bucket policy"
+    desc "show BUCKET", "show bucket policy"
     long_desc Help.text("policy/show")
-    def show
-      Show.new(options).run
+    def show(bucket)
+      Show.new(options.merge(bucket: bucket)).run
     end
 
-    desc "enable", "enable bucket policy"
+    desc "enable BUCKET", "enable bucket policy"
     long_desc Help.text("policy/enable")
-    def enable
-      Enable.new(options).run
+    def enable(bucket)
+      Enable.new(options.merge(bucket: bucket)).run
     end
 
-    desc "disable", "disable bucket policy"
+    desc "disable BUCKET", "disable bucket policy"
     long_desc Help.text("policy/disable")
-    def disable
-      Disable.new(options).run
+    def disable(bucket)
+      Disable.new(options.merge(bucket: bucket)).run
     end
   end
 end

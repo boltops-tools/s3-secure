@@ -20,5 +20,10 @@ class S3Bucket::Policy
       JSON.pretty_generate(data)
     rescue Aws::S3::Errors::NoSuchBucketPolicy
     end
+
+    # Useful when calling List outside of the list CLI
+    def set_s3(client)
+      @s3 = client
+    end
   end
 end
