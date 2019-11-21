@@ -1,11 +1,11 @@
-describe S3Bucket::CLI do
+describe S3Secure::CLI do
   before(:all) do
     @args = "--from Tung"
   end
 
-  describe "s3-bucket" do
+  describe "s3-secure" do
     it "hello" do
-      out = execute("exe/s3-bucket hello world #{@args}")
+      out = execute("exe/s3-secure hello world #{@args}")
       expect(out).to include("from: Tung\nHello world")
     end
 
@@ -18,7 +18,7 @@ describe S3Bucket::CLI do
     }
     commands.each do |command, expected_word|
       it "completion #{command}" do
-        out = execute("exe/s3-bucket completion #{command}")
+        out = execute("exe/s3-secure completion #{command}")
         expect(out).to include(expected_word) # only checking for one word for simplicity
       end
     end

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    s3-bucket (0.1.0)
+    s3-secure (0.1.0)
       activesupport
       aws-sdk-s3
       memoist
@@ -83,7 +83,7 @@ DEPENDENCIES
   codeclimate-test-reporter
   rake
   rspec
-  s3-bucket!
+  s3-secure!
 
 BUNDLED WITH
    2.0.2

@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+# Trap ^C
+Signal.trap("INT") {
+  puts "\nCtrl-C detected. Exiting..."
+  sleep 0.1
+  exit
+}
+
+$:.unshift(File.expand_path("../../lib", __FILE__))
+require "s3-secure"
+require "s3_secure/cli"
+
+S3Secure::CLI.start(ARGV)

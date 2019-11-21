@@ -7,7 +7,7 @@ ENV["TEST"] = "1"
 require "pp"
 require "byebug"
 root = File.expand_path("../", File.dirname(__FILE__))
-require "#{root}/lib/s3-bucket"
+require "#{root}/lib/s3-secure"
 
 module Helper
   def execute(cmd)
