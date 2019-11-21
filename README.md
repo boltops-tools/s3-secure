@@ -27,12 +27,12 @@ Summary of policy commands:
 
 There are some batch commands:
 
-    s3-bucket encryption enable-all FILE
-    s3-bucket encryption disable-all FILE
-    s3-bucket policy enable-https-all FILE
-    s3-bucket policy disable-https-all FILE
+    s3-bucket encryption batch enable FILE.txt
+    s3-bucket encryption batch disable FILE.txt
+    s3-bucket policy batch enable-https FILE.txt
+    s3-bucket policy batch disable-https FILE.txt
 
-The format of FILE is a list of bucket names separated by newlines.  Example:
+The format of FILE.txt is a list of bucket names separated by newlines.  Example:
 
 buckets.txt:
 
