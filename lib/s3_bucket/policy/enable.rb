@@ -7,9 +7,17 @@ class S3Bucket::Policy
       list.set_s3(@s3)
 
       bucket_policy = list.get_policy(@bucket)
-      if bucket_policy
-        # check rules to see if bucket_policy is already set of some sort
-        puts "Bucket #{@bucket} already has a bucket policy:"
+
+      checker = Checker.new(bucket_policy)
+      puts checker.has?("ForceSSLOnlyAccess2")
+
+      return
+
+      document = Document.new(bucket_policy)
+      policy_document = document.policy_document if checker.has?("ForceSSLOnlyAccess")
+
+      if policy_document
+        puts "Bucket policy for #{@bucket} already has ForceSSLOnlyAccess:"
         puts bucket_policy
       else
         # Set encryption rules

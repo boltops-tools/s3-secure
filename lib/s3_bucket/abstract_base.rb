@@ -1,5 +1,3 @@
-require "json"
-
 module S3Bucket
   class AbstractBase
     include S3Bucket::AwsServices
