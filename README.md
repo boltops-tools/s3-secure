@@ -9,20 +9,35 @@ The s3-bucket tool can be used to harden your s3 bucket security posture. It cur
 
 ## Usage
 
-You can use the list subcommands to list the current settings.
+Summary of encryption commands:
 
-    s3-bucket list encryption
-    s3-bucket list policy
+    s3-bucket encryption list
+    s3-bucket encryption show BUCKET
+    s3-bucket encryption enable BUCKET
+    s3-bucket encryption disable BUCKET
 
-Then you can enable encryption or add an bucket policy to ensure that https is used to access s3 urls.
+Summary of policy commands:
 
-    s3-bucket enable encryption BUCKET
-    s3-bucket enable ensure-https BUCKET
+    s3-bucket policy list
+    s3-bucket policy show BUCKET
+    s3-bucket policy enable-https BUCKET
+    s3-bucket policy disable-https BUCKET
 
-To enable multiple buckets use the `enable-all` command:
+## Batch Commands
 
-    s3-bucket enable-all encryption FILE
-    s3-bucket enable-all ensure-https FILE
+There are some batch commands:
+
+    s3-bucket encryption enable-all FILE
+    s3-bucket encryption disable-all FILE
+    s3-bucket policy enable-https-all FILE
+    s3-bucket policy disable-https-all FILE
+
+The format of FILE is a list of bucket names separated by newlines.  Example:
+
+buckets.txt:
+
+    my-bucket-1
+    my-bucket-2
 
 ## Installation
 

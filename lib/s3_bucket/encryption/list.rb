@@ -1,8 +1,8 @@
-class S3Bucket::List
-  class Encryption < Base
+class S3Bucket::Encryption
+  class List < Base
     def run
       buckets.each do |bucket|
-        @s3 = get_s3_regional_client(bucket)
+        @s3 = s3_regional_client(bucket)
         puts "Policy for bucket #{bucket.color(:green)}"
         encryption_rules = get_encryption_rules(bucket)
 
@@ -18,6 +18,11 @@ class S3Bucket::List
       resp = @s3.get_bucket_encryption(bucket: bucket)
       resp.server_side_encryption_configuration.rules # Aws::Xml::DefaultList object
     rescue Aws::S3::Errors::ServerSideEncryptionConfigurationNotFoundError
+    end
+
+    # Useful when calling List outside of the list CLI
+    def set_s3(client)
+      @s3 = client
     end
   end
 end

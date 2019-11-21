@@ -1,8 +1,8 @@
-class S3Bucket::List
-  class Policy < Base
+class S3Bucket::Policy
+  class List < Base
     def run
       buckets.each do |bucket|
-        @s3 = get_s3_regional_client(bucket)
+        @s3 = s3_regional_client(bucket)
         puts "Policy for bucket #{bucket.color(:green)}"
         policy = get_policy(bucket)
 

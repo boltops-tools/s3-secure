@@ -3,9 +3,13 @@ module S3Bucket
     class_option :verbose, type: :boolean
     class_option :noop, type: :boolean
 
-    desc "list SUBCOMMAND", "list subcommands"
-    long_desc Help.text(:list)
-    subcommand "list", List
+    desc "encryption SUBCOMMAND", "encryption subcommands"
+    long_desc Help.text(:encryption)
+    subcommand "encryption", Encryption
+
+    desc "policy SUBCOMMAND", "policy subcommands"
+    long_desc Help.text(:policy)
+    subcommand "policy", Policy
 
     desc "completion *PARAMS", "Prints words for auto-completion."
     long_desc Help.text("completion")
