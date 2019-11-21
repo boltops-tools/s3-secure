@@ -5,7 +5,7 @@ class S3Secure::Policy
     end
 
     def has?(sid)
-      return false if @bucket_policy.nil? or @bucket_policy.empty?
+      return false if @bucket_policy.blank?
 
       policy_document = JSON.load(@bucket_policy)
       statements = policy_document["Statement"]

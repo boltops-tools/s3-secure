@@ -8,16 +8,11 @@ class S3Secure::Policy
 
       bucket_policy = list.get_policy(@bucket)
 
-      checker = Checker.new(bucket_policy)
-      puts checker.has?("ForceSSLOnlyAccess2")
-
-      return
-
       document = Document.new(bucket_policy)
-      policy_document = document.policy_document if checker.has?("ForceSSLOnlyAccess")
+      policy_document = document.policy_document("ForceSslOnlyAccess")
 
       if policy_document
-        puts "Bucket policy for #{@bucket} already has ForceSSLOnlyAccess:"
+        puts "Bucket policy for #{@bucket} already has ForceSslOnlyAccess:"
         puts bucket_policy
       else
         # Set encryption rules
@@ -43,7 +38,7 @@ class S3Secure::Policy
           "Version": "2012-10-17",
           "Statement": [
             {
-              "Sid": "ForceSSLOnlyAccess",
+              "Sid": "ForceSslOnlyAccess",
               "Effect": "Deny",
               "Principal": "*",
               "Action": "s3:GetObject",

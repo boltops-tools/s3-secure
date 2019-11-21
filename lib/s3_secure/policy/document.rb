@@ -1,15 +1,23 @@
 class S3Secure::Policy
   class Document
+    extend Memoist
+    include ForceSsl
+
     def initialize(bucket_policy)
       @bucket_policy = bucket_policy # existing document policy
     end
 
-    def has?(sid)
-      return false if @bucket_policy.nil? or @bucket_policy.empty?
-
-      policy_document = JSON.load(@bucket_policy)
-      statements = policy_document["Statement"]
-      !!statements.detect { |s| s["Sid"] == sid }
+    # Returns JSON text
+    # Currently only support adding ForceSslOnlyAccess document policy.
+    def policy_document(sid)
+      meth = sid.underscore # ForceSslOnlyAccess => force_ssl_only_access
+      policy = send(meth) if respond_to?(meth)
+      JSON.pretty_generate(policy)
     end
+
+    def checker
+      Checker.new(@bucket_policy)
+    end
+    memoize :checker
   end
 end

@@ -1,14 +1,14 @@
 describe S3Secure::Policy::Document do
   subject { S3Secure::Policy::Document.new(policy_json) }
 
-  describe "already has ForceSSLOnlyAccess" do
+  describe "already has ForceSslOnlyAccess" do
     let(:policy_json) {
       <<~JSON
         {
             "Version": "2012-10-17",
             "Statement": [
                 {
-                    "Sid": "ForceSSLOnlyAccess",
+                    "Sid": "ForceSslOnlyAccess",
                     "Effect": "Deny",
                     "Principal": "*",
                     "Action": "s3:GetObject",
@@ -25,12 +25,12 @@ describe S3Secure::Policy::Document do
     }
 
     it "policy_document" do
-      result = subject.policy_document
-      # expect(result).to be true
+      result = subject.policy_document("ForceSslOnlyAccess")
+      expect(result).to include("ForceSslOnlyAccess")
     end
   end
 
-  describe "doesnt have ForceSSLOnlyAccess" do
+  describe "doesnt have ForceSslOnlyAccess" do
     let(:policy_json) {
       <<~JSON
         {
@@ -52,8 +52,8 @@ describe S3Secure::Policy::Document do
     }
 
     it "policy_document" do
-      result = subject.has?("ForceSSLOnlyAccess")
-      expect(result).to be false
+      result = subject.policy_document("ForceSslOnlyAccess")
+      expect(result).to include("ForceSslOnlyAccess")
     end
   end
 
@@ -61,8 +61,8 @@ describe S3Secure::Policy::Document do
     let(:policy_json) { nil }
 
     it "policy_document" do
-      result = subject.has?("ForceSSLOnlyAccess")
-      expect(result).to be false
+      result = subject.policy_document("ForceSslOnlyAccess")
+      expect(result).to include("ForceSslOnlyAccess")
     end
   end
 end
