@@ -1,8 +1,8 @@
-# S3Secure
+# s3-secure
 
 [![Gem Version](https://badge.fury.io/rb/s3-secure.png)](http://badge.fury.io/rb/s3-secure)
 
-The s3-secure tool can be used to harden your s3 bucket security posture. It currently supports:
+The s3-secure tool can be used to harden your s3 bucket security posture. It supports:
 
 * enabling encryption
 * adding an enforce ssl bucket policy.
