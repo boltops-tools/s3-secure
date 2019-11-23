@@ -2,6 +2,8 @@
 
 [![Gem Version](https://badge.fury.io/rb/s3-secure.png)](http://badge.fury.io/rb/s3-secure)
 
+[![BoltOps Badge](https://img.boltops.com/boltops/badges/boltops-badge.png)](https://www.boltops.com)
+
 The s3-secure tool can be used to harden your s3 bucket security posture. The tool is useful if you have a lot of buckets to update. It supports:
 
 * enabling encryption
