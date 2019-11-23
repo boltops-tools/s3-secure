@@ -10,7 +10,7 @@ class S3Secure::Policy
 
     # Returns JSON text
     # Currently only support adding ForceSSLOnlyAccess document policy.
-    def policy_document(sid, remove: false)
+    def policy_document(sid)
       enforcer_class = "S3Secure::Policy::Document::#{sid}"
       enforcer_class += "Remove" if @remove
       enforcer_class = enforcer_class.constantize # IE: ForceSSLOnlyAccess or ForceSSLOnlyAccessRemove
