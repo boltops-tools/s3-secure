@@ -31,11 +31,10 @@ class S3Secure::Policy
           @s3.delete_bucket_policy(bucket: @bucket)
         end
 
-        puts "Add bucket policy to bucket #{@bucket}:"
-        puts policy_document
+        puts "Remove bucket policy to bucket #{@bucket}:"
+        puts policy_document if policy_document
       else
         puts "Bucket policy for #{@bucket} does not have ForceSSLOnlyAccess policy statement. Nothing to be done."
-        # puts bucket_policy
       end
     end
   end

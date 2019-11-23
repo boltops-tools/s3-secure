@@ -16,7 +16,7 @@ class S3Secure::Policy
       enforcer_class = enforcer_class.constantize # IE: ForceSSLOnlyAccess
       enforcer = enforcer_class.new(@bucket, @bucket_policy)
       policy = enforcer.policy_document
-      JSON.pretty_generate(policy)
+      JSON.pretty_generate(policy) if policy
     end
 
     def checker
