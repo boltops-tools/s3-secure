@@ -7,6 +7,7 @@ module S3Secure
         map = {
           cli: "CLI",
           force_ssl_only_access: "ForceSSLOnlyAccess",
+          force_ssl_only_access_remove: "ForceSSLOnlyAccessRemove",
           version: "VERSION",
         }
         map[basename.to_sym] || super
