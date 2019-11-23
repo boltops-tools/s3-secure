@@ -4,7 +4,11 @@ module S3Secure
   class Autoloader
     class Inflector < Zeitwerk::Inflector
       def camelize(basename, _abspath)
-        map = { cli: "CLI", version: "VERSION" }
+        map = {
+          cli: "CLI",
+          force_ssl_only_access: "ForceSSLOnlyAccess",
+          version: "VERSION",
+        }
         map[basename.to_sym] || super
       end
     end

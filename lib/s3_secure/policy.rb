@@ -15,13 +15,13 @@ module S3Secure
     desc "enforce_ssl BUCKET", "Add enforce ssl bucket policy"
     long_desc Help.text("policy/enforce_ssl")
     def enforce_ssl(bucket)
-      Enforce.new(options.merge(bucket: bucket, sid: "ForceSslOnlyAccess")).run
+      Enforce.new(options.merge(bucket: bucket, sid: "ForceSSLOnlyAccess")).run
     end
 
     desc "unforce_ssl BUCKET", "Remove enforce ssl bucket policy"
     long_desc Help.text("policy/unforce_ssl")
     def unforce_ssl(bucket)
-      Unforce.new(options.merge(bucket: bucket, sid: "ForceSslOnlyAccess")).run
+      Unforce.new(options.merge(bucket: bucket, sid: "ForceSSLOnlyAccess")).run
     end
   end
 end

@@ -1,18 +1,18 @@
 describe S3Secure::Policy::Document do
-  subject { S3Secure::Policy::Document.new(policy_json) }
+  subject { S3Secure::Policy::Document.new("my-bucket", policy_json) }
 
-  describe "already has ForceSslOnlyAccess" do
+  describe "already has ForceSSLOnlyAccess" do
     let(:policy_json) {
       <<~JSON
         {
             "Version": "2012-10-17",
             "Statement": [
                 {
-                    "Sid": "ForceSslOnlyAccess",
+                    "Sid": "ForceSSLOnlyAccess",
                     "Effect": "Deny",
                     "Principal": "*",
                     "Action": "s3:GetObject",
-                    "Resource": "arn:aws:s3:::my-test-s3-secure-us-east-1/*",
+                    "Resource": "arn:aws:s3:::my-bucket/*",
                     "Condition": {
                         "Bool": {
                             "aws:SecureTransport": "false"
@@ -25,12 +25,12 @@ describe S3Secure::Policy::Document do
     }
 
     it "policy_document" do
-      result = subject.policy_document("ForceSslOnlyAccess")
-      expect(result).to include("ForceSslOnlyAccess")
+      result = subject.policy_document("ForceSSLOnlyAccess")
+      expect(result).to include("ForceSSLOnlyAccess")
     end
   end
 
-  describe "doesnt have ForceSslOnlyAccess" do
+  describe "doesnt have ForceSSLOnlyAccess" do
     let(:policy_json) {
       <<~JSON
         {
@@ -52,8 +52,8 @@ describe S3Secure::Policy::Document do
     }
 
     it "policy_document" do
-      result = subject.policy_document("ForceSslOnlyAccess")
-      expect(result).to include("ForceSslOnlyAccess")
+      result = subject.policy_document("ForceSSLOnlyAccess")
+      expect(result).to include("ForceSSLOnlyAccess")
     end
   end
 
@@ -61,8 +61,8 @@ describe S3Secure::Policy::Document do
     let(:policy_json) { nil }
 
     it "policy_document" do
-      result = subject.policy_document("ForceSslOnlyAccess")
-      expect(result).to include("ForceSslOnlyAccess")
+      result = subject.policy_document("ForceSSLOnlyAccess")
+      expect(result).to include("ForceSSLOnlyAccess")
     end
   end
 end

@@ -4,23 +4,9 @@ describe S3Secure::CLI do
   end
 
   describe "s3-secure" do
-    it "hello" do
-      out = execute("exe/s3-secure hello world #{@args}")
-      expect(out).to include("from: Tung\nHello world")
-    end
-
-    commands = {
-      "hell" => "hello",
-      "hello" => "name",
-      "hello -" =>  "--from",
-      "hello name" => "--from",
-      "hello name --" => "--from",
-    }
-    commands.each do |command, expected_word|
-      it "completion #{command}" do
-        out = execute("exe/s3-secure completion #{command}")
-        expect(out).to include(expected_word) # only checking for one word for simplicity
-      end
-    end
+    # it "hello" do
+    #   out = execute("exe/s3-secure hello world #{@args}")
+    #   expect(out).to include("from: Tung\nHello world")
+    # end
   end
 end

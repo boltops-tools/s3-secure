@@ -3,6 +3,7 @@ require "json"
 require "memoist"
 require "rainbow/ext/string"
 require "s3_secure/version"
+require "active_support/core_ext/module" # for delegate
 require "active_support/core_ext/string"
 
 require "s3_secure/autoloader"
