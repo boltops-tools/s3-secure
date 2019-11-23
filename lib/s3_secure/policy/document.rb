@@ -13,7 +13,7 @@ class S3Secure::Policy
     def policy_document(sid, remove: false)
       enforcer_class = "S3Secure::Policy::Document::#{sid}"
       enforcer_class += "Remove" if @remove
-      enforcer_class = enforcer_class.constantize # IE: ForceSSLOnlyAccess
+      enforcer_class = enforcer_class.constantize # IE: ForceSSLOnlyAccess or ForceSSLOnlyAccessRemove
       enforcer = enforcer_class.new(@bucket, @bucket_policy)
       policy = enforcer.policy_document
       JSON.pretty_generate(policy) if policy
