@@ -22,6 +22,9 @@ module S3Secure
       options[:endpoint] = "https://s3.#{region}.amazonaws.com" if region
       options[:region] = region if region
       Aws::S3::Client.new(options)
+    rescue Aws::STS::Errors::RegionDisabledException
+      puts "ERROR: Fail to establish client connection to region #{region}".color(:red)
+      raise
     end
     memoize :new_s3_regional_client
 
