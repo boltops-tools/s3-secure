@@ -3,6 +3,9 @@
 All notable changes to this project will be documented in this file.
 This project *tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.4.0]
+-  #1 summary command
+
 ## [0.3.0]
 - clean up policy_document method interface
 
