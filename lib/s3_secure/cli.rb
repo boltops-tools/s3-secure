@@ -11,6 +11,14 @@ module S3Secure
     long_desc Help.text(:policy)
     subcommand "policy", Policy
 
+    desc "summary", "Summarize buckets"
+    long_desc Help.text("summary")
+    option :ssl, default: "any", desc: "filter for ssl enforcement. Examples: any, yes, no"
+    option :encrypted, default: "any", desc: "filter for encryption enabled. Examples: any, yes, no"
+    def summary
+      Summary.new(options).run
+    end
+
     desc "batch *PARAMS", "Batch wrapper method"
     long_desc Help.text(:batch)
     def batch(*params)

@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "aws-sdk-s3"
   spec.add_dependency "memoist"
   spec.add_dependency "rainbow"
+  spec.add_dependency "text-table"
   spec.add_dependency "thor"
   spec.add_dependency "zeitwerk"
 
