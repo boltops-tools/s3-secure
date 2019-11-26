@@ -2,13 +2,10 @@ require "text-table"
 
 module S3Secure
   class Table
+    attr_reader :data
     def initialize(options, data)
       @options = options
       @data = data
-    end
-
-    def data
-      @options[:header] ? @data : @data[1..-1]  # remove the header row
     end
 
     def display
