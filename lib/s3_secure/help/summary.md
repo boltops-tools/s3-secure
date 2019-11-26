@@ -1,7 +1,7 @@
 ## Examples
 
     $ s3-secure summary
-    Determing bucket security-related settings...
+    Determining bucket security-related settings...
     +----------------------------+------+------------+
     |           Bucket           | SSL? | Encrypted? |
     +----------------------------+------+------------+
@@ -13,7 +13,7 @@
 There are `--ssl no` and `--encrypted no` filtering options:
 
     $ s3-secure summary --ssl no --encrypted no
-    Determing bucket security-related settings...
+    Determining bucket security-related settings...
     +----------------------------+------+------------+
     |           Bucket           | SSL? | Encrypted? |
     +----------------------------+------+------------+
