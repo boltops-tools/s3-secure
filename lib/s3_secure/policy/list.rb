@@ -1,17 +1,25 @@
 class S3Secure::Policy
   class List < Base
     def run
+      presenter = CliFormat::Presenter.new(@options)
+      presenter.header = ["Bucket", "Has Policy?"]
+
       buckets.each do |bucket|
         @s3 = s3_regional_client(bucket)
-        puts "Policy for bucket #{bucket.color(:green)}"
+        $stderr.puts "Getting policy for bucket #{bucket.color(:green)}"
         policy = get_policy(bucket)
 
-        if policy
-          puts policy
+        row = [bucket, !!policy]
+        if @options[:policy].nil?
+          presenter.rows << row # always show policy
+        elsif @options[:policy]
+          presenter.rows << row if policy # only show if bucket has a policy
         else
-          puts "Bucket does not have a bucket policy"
+          presenter.rows << row unless policy # only show if bucket doesnt have a policy
         end
       end
+
+      presenter.show
     end
 
     def get_policy(bucket)

@@ -2,6 +2,8 @@ module S3Secure
   class Policy < Command
     desc "list", "List bucket policies"
     long_desc Help.text("policy/list")
+    option :format, desc: "Format options: #{CliFormat.formats.join(', ')}"
+    option :policy, type: :boolean, desc: "Filter for has policy: all, true, false"
     def list
       List.new(options).run
     end
