@@ -2,6 +2,8 @@ module S3Secure
   class Encryption < Command
     desc "list", "List bucket encryptions"
     long_desc Help.text("encryption/list")
+    option :format, desc: "Format options: #{CliFormat.formats.join(', ')}"
+    option :encryption, type: :boolean, desc: "Filter for encryption: all, true, false"
     def list
       List.new(options).run
     end

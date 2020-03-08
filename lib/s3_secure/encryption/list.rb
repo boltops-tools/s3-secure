@@ -1,17 +1,25 @@
 class S3Secure::Encryption
   class List < Base
     def run
+      presenter = CliFormat::Presenter.new(@options)
+      presenter.header = ["Bucket", "Has Encryption?"]
+
       buckets.each do |bucket|
         @s3 = s3_regional_client(bucket)
-        puts "Policy for bucket #{bucket.color(:green)}"
+        $stderr.puts "Getting encryption for bucket #{bucket.color(:green)}"
         encryption_rules = get_encryption_rules(bucket)
 
-        if encryption_rules
-          puts encryption_rules
+        row = [bucket, !!encryption_rules]
+        if @options[:encryption].nil?
+          presenter.rows << row # always show policy
+        elsif @options[:encryption]
+          presenter.rows << row if encryption_rules # only show if bucket has some encryption rules
         else
-          puts "Bucket does not have bucket encryption enabled"
+          presenter.rows << row unless encryption_rules # only show if bucket doesnt have any encryption rules
         end
       end
+
+      presenter.show
     end
 
     def get_encryption_rules(bucket)
