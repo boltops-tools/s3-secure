@@ -6,12 +6,9 @@ class S3Secure::Policy
     end
 
     def run
-      @s3 = s3_regional_client(@bucket)
+      show = S3Secure::Policy::Show.new(@options)
 
-      list = S3Secure::Policy::List.new(@options)
-      list.set_s3(@s3)
-
-      bucket_policy = list.get_policy(@bucket)
+      bucket_policy = show.policy
       document = Document.new(@bucket, bucket_policy)
       if document.has?(@sid)
         puts "Bucket policy for #{@bucket} has ForceSSLOnlyAccess policy statement already:"
@@ -24,7 +21,7 @@ class S3Secure::Policy
         #    put_bucket_policy returns #<struct Aws::EmptyStructure>
         #
         policy_document = document.policy_document(@sid)
-        @s3.put_bucket_policy(
+        s3.put_bucket_policy(
           bucket: @bucket,
           policy: policy_document,
         )

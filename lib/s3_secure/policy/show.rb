@@ -1,12 +1,6 @@
 class S3Secure::Policy
   class Show < Base
     def run
-      @s3 = s3_regional_client(@bucket)
-
-      list = S3Secure::Policy::List.new(@options)
-      list.set_s3(@s3)
-
-      policy = list.get_policy(@bucket)
       if policy
         puts "Bucket #{@bucket} is configured with this policy:"
         puts policy
@@ -15,5 +9,13 @@ class S3Secure::Policy
         puts "Bucket #{@bucket} is not configured bucket policy"
       end
     end
+
+    def policy
+      resp = s3.get_bucket_policy(bucket: @bucket)
+      data = JSON.load(resp.policy.read) # String
+      JSON.pretty_generate(data)
+    rescue Aws::S3::Errors::NoSuchBucketPolicy
+    end
+    memoize :policy
   end
 end

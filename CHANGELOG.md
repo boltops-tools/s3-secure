@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project *tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.5.0]
+- add commands: access_logs, lifecycle, versioning, remediate_all
+- s3 client is smarter and switches regions on a per-bucket basis
+
 ## [0.4.2]
 - improve error message for Aws::STS::Errors::RegionDisabledException error
 

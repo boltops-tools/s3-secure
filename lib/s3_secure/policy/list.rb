@@ -5,9 +5,9 @@ class S3Secure::Policy
       presenter.header = ["Bucket", "Has Policy?"]
 
       buckets.each do |bucket|
-        @s3 = s3_regional_client(bucket)
         $stderr.puts "Getting policy for bucket #{bucket.color(:green)}"
-        policy = get_policy(bucket)
+        show = Show.new(bucket: bucket)
+        policy = show.policy
 
         row = [bucket, !!policy]
         if @options[:policy].nil?
@@ -20,18 +20,6 @@ class S3Secure::Policy
       end
 
       presenter.show
-    end
-
-    def get_policy(bucket)
-      resp = @s3.get_bucket_policy(bucket: bucket)
-      data = JSON.load(resp.policy.read) # String
-      JSON.pretty_generate(data)
-    rescue Aws::S3::Errors::NoSuchBucketPolicy
-    end
-
-    # Useful when calling List outside of the list CLI
-    def set_s3(client)
-      @s3 = client
     end
   end
 end
