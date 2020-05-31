@@ -10,9 +10,10 @@ Gem::Specification.new do |spec|
   spec.email         = ["tongueroo@gmail.com"]
   spec.summary       = "S3 Bucket security hardening tool"
   spec.homepage      = "https://github.com/tongueroo/s3-secure"
-  spec.license       = "MIT"
+  spec.license       = "Apache2.0"
 
-  spec.files         = `git ls-files`.split($/)
+  git_installed      = system("type git > /dev/null 2>&1")
+  spec.files         = git_installed ? `git ls-files`.split($/) : Dir.glob("**/*")
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
