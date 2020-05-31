@@ -44,9 +44,7 @@ class S3Secure::Summary
 
   private
     def ssl?(bucket)
-      s3 = s3_regional_client(bucket)
       list = S3Secure::Policy::List.new(@options)
-      list.set_s3(s3)
 
       bucket_policy = list.get_policy(bucket)
       document = S3Secure::Policy::Document.new(bucket, bucket_policy)

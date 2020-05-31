@@ -3,6 +3,10 @@ module S3Secure
     class_option :verbose, type: :boolean
     class_option :noop, type: :boolean
 
+    desc "access_logs SUBCOMMAND", "access_logs subcommands"
+    long_desc Help.text(:access_logs)
+    subcommand "access_logs", AccessLogs
+
     desc "encryption SUBCOMMAND", "encryption subcommands"
     long_desc Help.text(:encryption)
     subcommand "encryption", Encryption
@@ -10,6 +14,20 @@ module S3Secure
     desc "policy SUBCOMMAND", "policy subcommands"
     long_desc Help.text(:policy)
     subcommand "policy", Policy
+
+    desc "versioning SUBCOMMAND", "versioning subcommands"
+    long_desc Help.text(:versioning)
+    subcommand "versioning", Versioning
+
+    desc "lifecycle SUBCOMMAND", "lifecycle subcommands"
+    long_desc Help.text(:lifecycle)
+    subcommand "lifecycle", Lifecycle
+
+    desc "remediate_all", "Remediate all. For more fine-grain control use each of the commands directly."
+    long_desc Help.text("remediate_all")
+    def remediate_all(bucket)
+      RemediateAll.new(options.merge(bucket: bucket)).run
+    end
 
     desc "summary", "Summarize buckets"
     long_desc Help.text("summary")

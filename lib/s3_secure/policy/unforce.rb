@@ -6,12 +6,9 @@ class S3Secure::Policy
     end
 
     def run
-      @s3 = s3_regional_client(@bucket)
+      show = S3Secure::Policy::Show.new(@options)
 
-      list = S3Secure::Policy::List.new(@options)
-      list.set_s3(@s3)
-
-      bucket_policy = list.get_policy(@bucket)
+      bucket_policy = show.policy
       document = Document.new(@bucket, bucket_policy, remove: true)
       if document.has?(@sid)
         # Set encryption rules
@@ -23,12 +20,12 @@ class S3Secure::Policy
         policy_document = document.policy_document(@sid)
 
         if policy_document
-          @s3.put_bucket_policy(
+          s3.put_bucket_policy(
             bucket: @bucket,
             policy: policy_document,
           )
         else
-          @s3.delete_bucket_policy(bucket: @bucket)
+          s3.delete_bucket_policy(bucket: @bucket)
         end
 
         puts "Remove bucket policy statement from bucket #{@bucket}:"

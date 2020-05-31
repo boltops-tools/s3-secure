@@ -1,16 +1,12 @@
 class S3Secure::Encryption
   class Enable < Base
     def run
-      @s3 = s3_regional_client(@bucket)
+      show = Show.new(@options)
 
-      list = S3Secure::Encryption::List.new(@options)
-      list.set_s3(@s3)
-
-      rules = list.get_encryption_rules(@bucket)
-      if rules
+      if show.enabled?
         # check rules to see if encryption is already set of some sort
         puts "Bucket #{@bucket} already has encryption rules:"
-        puts rules.map(&:to_h)
+        puts show.rules.map(&:to_h)
       else
         # Set encryption rules
         # Ruby docs: https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/S3/Client.html#put_bucket_encryption-instance_method
@@ -18,7 +14,7 @@ class S3Secure::Encryption
         #
         #    put_bucket_encryption returns #<struct Aws::EmptyStructure>
         #
-        @s3.put_bucket_encryption(
+        s3.put_bucket_encryption(
           bucket: @bucket,
           server_side_encryption_configuration: {
             rules: [rule]})
