@@ -28,10 +28,10 @@ class S3Secure::Policy
           s3.delete_bucket_policy(bucket: @bucket)
         end
 
-        puts "Remove bucket policy statement from bucket #{@bucket}:"
-        puts policy_document if policy_document
+        say "Remove bucket policy statement from bucket #{@bucket}:"
+        say policy_document if policy_document
       else
-        puts "Bucket policy for #{@bucket} does not have ForceSSLOnlyAccess policy statement. Nothing to be done."
+        say "Bucket policy for #{@bucket} does not have ForceSSLOnlyAccess policy statement. Nothing to be done."
       end
     end
   end

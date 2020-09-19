@@ -1,5 +1,7 @@
 module S3Secure
   class AccessLogs < Command
+    class_option :quiet, type: :boolean
+
     desc "list", "List bucket access_logs setting"
     long_desc Help.text("access_logs/list")
     option :format, desc: "Format options: #{CliFormat.formats.join(', ')}"

@@ -10,9 +10,9 @@ class S3Secure::Versioning
             status: "Suspended",
           },
         )
-        puts "Versioning Suspended on bucket #{@bucket}"
+        say "Versioning Suspended on bucket #{@bucket}"
       else
-        puts "Bucket #{@bucket} is already has versioning already Suspended or not Enabled."
+        say "Bucket #{@bucket} is already has versioning already Suspended or not Enabled."
       end
     end
   end

@@ -1,9 +1,9 @@
 class S3Secure::AccessLogs
   class Show < Base
     def run
-      puts "Bucket ACL:"
+      say "Bucket ACL:"
       pp bucket_acl_grants
-      puts "Bucket Logging:"
+      say "Bucket Logging:"
       pp bucket_logging
     end
 

@@ -2,10 +2,10 @@ class S3Secure::Encryption
   class Show < Base
     def run
       if rules
-        puts "Bucket #{@bucket} is configured with these encryption rules:"
-        puts rules.map(&:to_h)
+        say "Bucket #{@bucket} is configured with these encryption rules:"
+        say rules.map(&:to_h)
       else
-        puts "Bucket #{@bucket} is not configured with encryption at the bucket level"
+        say "Bucket #{@bucket} is not configured with encryption at the bucket level"
       end
     end
 

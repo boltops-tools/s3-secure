@@ -9,7 +9,7 @@ class S3Secure::AccessLogs
 
     def remove_access_logging
       unless @show.logging_enabled?
-        puts "Bucket #{@bucket} is not configured with access logging. So nothing to remove."
+        say "Bucket #{@bucket} is not configured with access logging. So nothing to remove."
         return
       end
 
@@ -17,12 +17,12 @@ class S3Secure::AccessLogs
         bucket: @bucket, # source
         bucket_logging_status: {}, # empty hash to remove
       )
-      puts "Bucket #{@bucket} access logging removed"
+      say "Bucket #{@bucket} access logging removed"
     end
 
     def remove_bucket_acl
       unless @show.acl_enabled?
-        puts "Bucket #{@bucket} is not configured the log delivery ACL. So nothing to remove."
+        say "Bucket #{@bucket} is not configured the log delivery ACL. So nothing to remove."
         return
       end
 
@@ -31,7 +31,7 @@ class S3Secure::AccessLogs
         bucket: @bucket,
         access_control_policy: access_control_policy,
       )
-      puts "Bucket #{@bucket} ACL Log Delivery removed"
+      say "Bucket #{@bucket} ACL Log Delivery removed"
     end
   end
 end

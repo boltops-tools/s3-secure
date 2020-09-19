@@ -1,5 +1,7 @@
 module S3Secure
   class Encryption < Command
+    class_option :quiet, type: :boolean
+
     desc "list", "List bucket encryptions"
     long_desc Help.text("encryption/list")
     option :format, desc: "Format options: #{CliFormat.formats.join(', ')}"
