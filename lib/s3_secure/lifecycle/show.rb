@@ -4,13 +4,13 @@ class S3Secure::Lifecycle
 
     def run
       if any?
-        puts "This S3 bucket has lifecycle rules"
+        say "This S3 bucket has lifecycle rules"
       else
-        puts "This S3 bucket does not have lifecycle rules"
+        say "This S3 bucket does not have lifecycle rules"
       end
 
       if any?
-        puts "Bucket lifecycle details: "
+        say "Bucket lifecycle details: "
         pp get_lifecycle(@bucket).to_h
       end
     end

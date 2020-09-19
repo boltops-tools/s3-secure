@@ -1,5 +1,7 @@
 module S3Secure
   class Lifecycle < Command
+    class_option :quiet, type: :boolean
+
     desc "list", "List bucket lifecycles"
     long_desc Help.text("lifecycle/list")
     option :format, desc: "Format options: #{CliFormat.formats.join(', ')}"

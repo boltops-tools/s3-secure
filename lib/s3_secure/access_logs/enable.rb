@@ -9,7 +9,7 @@ class S3Secure::AccessLogs
     # Bucket ACL applies on the target bucket only
     def add_bucket_acl
       if @show.acl_enabled?
-        puts "Bucket acl already has log delivery ACL"
+        say "Bucket acl already has log delivery ACL"
         return
       end
 
@@ -17,12 +17,12 @@ class S3Secure::AccessLogs
         bucket: @bucket,
         access_control_policy: @show.access_control_policy_with_log_delivery_permissions,
       )
-      puts "Added to bucket acl that grants log delivery"
+      say "Added to bucket acl that grants log delivery"
     end
 
     def enable_access_logging
       if @show.logging_enabled?
-        puts "Bucket access logging already enabled"
+        say "Bucket access logging already enabled"
         return
       end
 
@@ -35,7 +35,7 @@ class S3Secure::AccessLogs
           },
         },
       )
-      puts "Enabled access logging on the source bucket #{@bucket} to be delivered to the target bucket #{@show.target_bucket}"
+      say "Enabled access logging on the source bucket #{@bucket} to be delivered to the target bucket #{@show.target_bucket}"
     end
   end
 end

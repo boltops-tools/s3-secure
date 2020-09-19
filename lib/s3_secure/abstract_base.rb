@@ -1,7 +1,8 @@
 module S3Secure
   class AbstractBase
-    include S3Secure::AwsServices
     extend Memoist
+    include S3Secure::AwsServices
+    include Say
 
     def initialize(options={})
       @options = options

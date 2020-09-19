@@ -5,9 +5,9 @@ class S3Secure::Encryption
 
       if show.enabled?
         s3.delete_bucket_encryption(bucket: @bucket) # returns resp = #<struct Aws::EmptyStructure>
-        puts "Bucket #{@bucket} encryption has been removed"
+        say "Bucket #{@bucket} encryption has been removed"
       else
-        puts "Bucket #{@bucket} is not configured with encryption at the bucket level"
+        say "Bucket #{@bucket} is not configured with encryption at the bucket level"
       end
     end
   end

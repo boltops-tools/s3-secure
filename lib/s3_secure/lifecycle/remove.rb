@@ -5,7 +5,7 @@ class S3Secure::Lifecycle
     def run
       show = Show.new(@options)
       unless show.has?(RULE_ID)
-        puts "Bucket #{@bucket} already does not have the #{RULE_ID} lifecycle rule."
+        say "Bucket #{@bucket} already does not have the #{RULE_ID} lifecycle rule."
         return
       end
 
@@ -22,7 +22,7 @@ class S3Secure::Lifecycle
         )
       end
 
-      puts "Removed the #{RULE_ID} lifecycle rule on bucket #{@bucket}"
+      say "Removed the #{RULE_ID} lifecycle rule on bucket #{@bucket}"
     end
   end
 end

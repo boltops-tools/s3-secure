@@ -3,7 +3,7 @@ class S3Secure::Versioning
     def run
       show = Show.new(@options)
       if show.enabled?
-        puts "Bucket #{@bucket} is has versioning already enabled."
+        say "Bucket #{@bucket} is has versioning already enabled."
       else
         s3.put_bucket_versioning(
           bucket: @bucket,
@@ -12,7 +12,7 @@ class S3Secure::Versioning
             status: "Enabled",
           },
         )
-        puts "Versioning enabled on bucket #{@bucket}"
+        say "Versioning enabled on bucket #{@bucket}"
       end
     end
   end

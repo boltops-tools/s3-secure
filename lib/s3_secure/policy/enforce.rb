@@ -11,8 +11,8 @@ class S3Secure::Policy
       bucket_policy = show.policy
       document = Document.new(@bucket, bucket_policy)
       if document.has?(@sid)
-        puts "Bucket policy for #{@bucket} has ForceSSLOnlyAccess policy statement already:"
-        puts bucket_policy
+        say "Bucket policy for #{@bucket} has ForceSSLOnlyAccess policy statement already:"
+        say bucket_policy
       else
         # Set encryption rules
         # Ruby docs: https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/S3/Client.html#put_bucket_policy-instance_method
@@ -25,8 +25,7 @@ class S3Secure::Policy
           bucket: @bucket,
           policy: policy_document,
         )
-        puts "Add bucket policy to bucket #{@bucket}:"
-        puts policy_document
+        say "Add bucket policy to bucket #{@bucket}:"
       end
     end
   end

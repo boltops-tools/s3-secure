@@ -1,5 +1,7 @@
 module S3Secure
   class Versioning < Command
+    class_option :quiet, type: :boolean
+
     desc "list", "List bucket versionings"
     long_desc Help.text("versioning/list")
     option :format, desc: "Format options: #{CliFormat.formats.join(', ')}"

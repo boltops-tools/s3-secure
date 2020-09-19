@@ -2,13 +2,13 @@ class S3Secure::Versioning
   class Show < Base
     def run
       if enabled?
-        puts "This S3 bucket has versioning enabled"
+        say "This S3 bucket has versioning enabled"
       else
-        puts "This S3 bucket does not have versioning enabled"
+        say "This S3 bucket does not have versioning enabled"
       end
       details = get_versioning(@bucket).to_h
       unless details.empty?
-        puts "Bucket versioning details: "
+        say "Bucket versioning details: "
         pp details
       end
     end

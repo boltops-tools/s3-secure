@@ -1,6 +1,6 @@
 module S3Secure
   class CLI < Command
-    class_option :verbose, type: :boolean
+    class_option :quiet, type: :boolean
     class_option :noop, type: :boolean
 
     desc "access_logs SUBCOMMAND", "access_logs subcommands"
@@ -23,7 +23,7 @@ module S3Secure
     long_desc Help.text(:lifecycle)
     subcommand "lifecycle", Lifecycle
 
-    desc "remediate_all", "Remediate all. For more fine-grain control use each of the commands directly."
+    desc "remediate_all BUCKET", "Remediate all. For more fine-grain control use each of the commands directly."
     long_desc Help.text("remediate_all")
     def remediate_all(bucket)
       RemediateAll.new(options.merge(bucket: bucket)).run

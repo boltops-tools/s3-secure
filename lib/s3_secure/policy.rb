@@ -1,5 +1,7 @@
 module S3Secure
   class Policy < Command
+    class_option :quiet, type: :boolean
+
     desc "list", "List bucket policies"
     long_desc Help.text("policy/list")
     option :format, desc: "Format options: #{CliFormat.formats.join(', ')}"

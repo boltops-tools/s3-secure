@@ -5,8 +5,7 @@ class S3Secure::Encryption
 
       if show.enabled?
         # check rules to see if encryption is already set of some sort
-        puts "Bucket #{@bucket} already has encryption rules:"
-        puts show.rules.map(&:to_h)
+        say "Bucket #{@bucket} already has encryption rules:"
       else
         # Set encryption rules
         # Ruby docs: https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/S3/Client.html#put_bucket_encryption-instance_method
@@ -18,8 +17,7 @@ class S3Secure::Encryption
           bucket: @bucket,
           server_side_encryption_configuration: {
             rules: [rule]})
-        puts "Encyption enabled on bucket #{@bucket} with rules:"
-        pp rule
+        say "Encyption enabled on bucket #{@bucket} with rules:"
       end
     end
 

@@ -9,7 +9,7 @@ class S3Secure::Lifecycle
         builder = Builder.new(current_rules)
         rules = builder.rules_with_addition(@options[:prefix])
         if current_rules.size == rules.size
-          puts "WARN: rule wasnt added because a #{RULE_ID} already exists".color(:yellow)
+          say "WARN: rule wasnt added because a #{RULE_ID} already exists".color(:yellow)
         else
           s3.put_bucket_lifecycle_configuration(
             bucket: @bucket, # required
@@ -17,7 +17,7 @@ class S3Secure::Lifecycle
           )
         end
       elsif show.any?
-        puts "Bucket #{@bucket} is has a lifecycle policy already."
+        say "Bucket #{@bucket} is has a lifecycle policy already."
         return
       else
         options = {
@@ -27,7 +27,7 @@ class S3Secure::Lifecycle
         s3.put_bucket_lifecycle_configuration(options)
       end
 
-      puts "Added lifecycle policy to bucket #{@bucket}"
+      say "Added lifecycle policy to bucket #{@bucket}"
     end
   end
 end
