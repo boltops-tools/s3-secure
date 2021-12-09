@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Tung Nguyen"]
   spec.email         = ["tongueroo@gmail.com"]
   spec.summary       = "S3 Bucket security hardening tool"
-  spec.homepage      = "https://github.com/tongueroo/s3-secure"
+  spec.homepage      = "https://github.com/boltops-tools/s3-secure"
   spec.license       = "Apache2.0"
 
   git_installed      = system("type git > /dev/null 2>&1")
