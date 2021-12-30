@@ -1,4 +1,4 @@
-class S3Secure::Policy
+module S3Secure::Policy
   class List < Base
     def run
       presenter = CliFormat::Presenter.new(@options)

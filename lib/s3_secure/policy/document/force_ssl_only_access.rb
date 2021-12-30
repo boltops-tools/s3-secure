@@ -1,4 +1,4 @@
-class S3Secure::Policy::Document
+module S3Secure::Policy::Document
   class ForceSSLOnlyAccess < Base
     def policy_document
       if @bucket_policy.blank?

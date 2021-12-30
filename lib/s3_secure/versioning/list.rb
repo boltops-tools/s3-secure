@@ -1,4 +1,4 @@
-class S3Secure::Versioning
+module S3Secure::Versioning
   class List < Base
     def run
       presenter = CliFormat::Presenter.new(@options)

@@ -1,4 +1,4 @@
-module S3Secure
+class S3Secure::CLI
   class Batch
     extend Memoist
 

@@ -1,4 +1,4 @@
-class S3Secure::Summary
+module S3Secure::Summary
   class Item
     attr_reader :bucket
     def initialize(bucket, properties={})

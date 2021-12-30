@@ -1,4 +1,4 @@
-class S3Secure::Policy::Document
+module S3Secure::Policy::Document
   class Base
     extend Memoist
 

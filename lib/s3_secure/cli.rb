@@ -1,5 +1,5 @@
 module S3Secure
-  class CLI < Command
+  class CLI < S3Secure::Command
     class_option :quiet, type: :boolean
     class_option :noop, type: :boolean
 

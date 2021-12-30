@@ -1,4 +1,4 @@
-class S3Secure::AccessLogs
+module S3Secure::AccessLogs
   class Disable < Base
     def run
       @show = Show.new(bucket: @bucket)

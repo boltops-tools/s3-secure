@@ -1,4 +1,4 @@
-class S3Secure::AccessLogs
+module S3Secure::AccessLogs
   class Show < Base
     def run
       say "Bucket ACL:"

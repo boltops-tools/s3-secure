@@ -1,4 +1,4 @@
-class S3Secure::Versioning
+module S3Secure::Versioning
   class Disable < Base
     def run
       show = Show.new(@options)
