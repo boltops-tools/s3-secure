@@ -23,6 +23,10 @@ module S3Secure
     long_desc Help.text(:lifecycle)
     subcommand "lifecycle", Lifecycle
 
+    desc "public_access SUBCOMMAND", "public_access subcommands"
+    long_desc Help.text(:public_access)
+    subcommand "public_access", PublicAccess
+
     desc "remediate_all BUCKET", "Remediate all. For more fine-grain control use each of the commands directly."
     long_desc Help.text("remediate_all")
     def remediate_all(bucket)
