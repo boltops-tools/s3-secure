@@ -1,4 +1,4 @@
-class S3Secure::Policy
+module S3Secure::Policy
   class Unforce < Base
     def initialize(options={})
       super

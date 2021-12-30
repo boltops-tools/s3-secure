@@ -1,4 +1,4 @@
-class S3Secure::Lifecycle
+module S3Secure::Lifecycle
   class List < Base
     def run
       presenter = CliFormat::Presenter.new(@options)

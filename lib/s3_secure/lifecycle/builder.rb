@@ -1,4 +1,4 @@
-class S3Secure::Lifecycle
+module S3Secure::Lifecycle
   class Builder
     # Note: put_bucket_lifecycle_configuration and put_bucket_lifecycle understand different payloads.
     # put_bucket_lifecycle is old and shouldnt be used

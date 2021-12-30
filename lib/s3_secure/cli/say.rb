@@ -1,4 +1,4 @@
-module S3Secure
+class S3Secure::CLI
   module Say
     def say(msg)
       puts msg unless @options[:quiet]

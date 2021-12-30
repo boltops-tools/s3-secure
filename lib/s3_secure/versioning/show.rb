@@ -1,4 +1,4 @@
-class S3Secure::Versioning
+module S3Secure::Versioning
   class Show < Base
     def run
       if enabled?

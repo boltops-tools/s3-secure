@@ -1,4 +1,4 @@
-class S3Secure::Encryption
+module S3Secure::Encryption
   class Show < Base
     def run
       if rules
@@ -7,6 +7,7 @@ class S3Secure::Encryption
       else
         say "Bucket #{@bucket} is not configured with encryption at the bucket level"
       end
+      rules
     end
 
     def enabled?

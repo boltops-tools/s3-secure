@@ -1,4 +1,4 @@
-class S3Secure::AccessLogs
+module S3Secure::AccessLogs
   class List < Base
     def run
       presenter = CliFormat::Presenter.new(@options)

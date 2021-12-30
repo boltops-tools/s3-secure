@@ -8,6 +8,13 @@ module S3Secure::AwsServices
       @@s3_clients[@bucket] ||= new_s3_regional_client
     end
 
+    def s3_regional_client(bucket)
+      temp = @bucket
+      @bucket = bucket
+      @@s3_clients[bucket] ||= new_s3_regional_client
+      @bucket = temp
+    end
+
     def new_s3_regional_client
       options = {}
       options[:endpoint] = "https://s3.#{region}.amazonaws.com"

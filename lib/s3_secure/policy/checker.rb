@@ -1,4 +1,4 @@
-class S3Secure::Policy
+module S3Secure::Policy
   class Checker
     def initialize(bucket_policy)
       @bucket_policy = bucket_policy # existing document policy

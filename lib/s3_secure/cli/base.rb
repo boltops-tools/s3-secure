@@ -1,5 +1,5 @@
-module S3Secure
-  class AbstractBase
+class S3Secure::CLI
+  class Base
     extend Memoist
     include S3Secure::AwsServices
     include Say

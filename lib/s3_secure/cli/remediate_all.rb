@@ -1,5 +1,5 @@
-module S3Secure
-  class RemediateAll < AbstractBase
+class S3Secure::CLI
+  class RemediateAll < Base
     def run
       o = @options.merge(bucket: @bucket)
       Encryption::Enable.new(o).run

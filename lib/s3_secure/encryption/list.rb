@@ -1,4 +1,4 @@
-class S3Secure::Encryption
+module S3Secure::Encryption
   class List < Base
     def run
       presenter = CliFormat::Presenter.new(@options)

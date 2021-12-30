@@ -1,4 +1,4 @@
-class S3Secure::Lifecycle
+module S3Secure::Lifecycle
   class Remove < Base
     RULE_ID = Base::RULE_ID
 

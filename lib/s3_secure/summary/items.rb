@@ -1,5 +1,5 @@
-class S3Secure::Summary
-  class Items < S3Secure::AbstractBase
+module S3Secure::Summary
+  class Items < S3Secure::CLI::Base
     extend Memoist
 
     # override initialize
@@ -44,9 +44,9 @@ class S3Secure::Summary
 
   private
     def ssl?(bucket)
-      list = S3Secure::Policy::List.new(@options)
+      show = S3Secure::Policy::Show.new(@options.merge(bucket: bucket))
 
-      bucket_policy = list.get_policy(bucket)
+      bucket_policy = show.run
       document = S3Secure::Policy::Document.new(bucket, bucket_policy)
       document.has?("ForceSSLOnlyAccess")
     end
@@ -54,10 +54,9 @@ class S3Secure::Summary
 
     def encrypted?(bucket)
       s3 = s3_regional_client(bucket)
-      list = S3Secure::Encryption::List.new(@options)
-      list.set_s3(s3)
+      show = S3Secure::Encryption::Show.new(@options.merge(bucket: bucket))
 
-      rules = list.get_encryption_rules(bucket)
+      rules = show.run
       !!rules
     end
     memoize :encrypted?

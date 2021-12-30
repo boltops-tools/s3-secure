@@ -1,4 +1,4 @@
-class S3Secure::Encryption
+module S3Secure::Encryption
   class Enable < Base
     def run
       show = Show.new(@options)
