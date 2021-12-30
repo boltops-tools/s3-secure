@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "cli-format"
   spec.add_dependency "memoist"
   spec.add_dependency "rainbow"
+  spec.add_dependency "rexml"
   spec.add_dependency "text-table"
   spec.add_dependency "thor"
   spec.add_dependency "zeitwerk"
