@@ -1,4 +1,4 @@
-module S3Secure::Policy::Document
+class S3Secure::Policy::Document
   class ForceSSLOnlyAccessRemove < Base
     def initialize(bucket, bucket_policy)
       # @bucket_policy is existing document policy

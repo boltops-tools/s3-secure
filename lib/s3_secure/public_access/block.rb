@@ -10,7 +10,7 @@ module S3Secure::PublicAccess
           restrict_public_buckets: true,
         },
       )
-      $stderr.puts("Public access blocked for bucket: #{@bucket}")
+      say "Public access blocked for bucket: #{@bucket}"
       resp
     end
   end

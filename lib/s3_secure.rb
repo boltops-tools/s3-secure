@@ -14,3 +14,5 @@ S3Secure::Autoloader.setup
 module S3Secure
   class Error < StandardError; end
 end
+
+require_relative "s3_secure/backwards_compatibility"
