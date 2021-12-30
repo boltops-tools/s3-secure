@@ -5,7 +5,7 @@ module S3Secure::PublicAccess
       presenter.header = ["Bucket", "Block Public Access?"]
 
       buckets.each do |bucket|
-        $stderr.puts "Getting bucket public access configuration for bucket #{bucket.color(:green)}"
+        say "Getting bucket public access configuration for bucket #{bucket.color(:green)}"
 
         blocked = Show.new(bucket: bucket).blocked?
         row = [bucket, blocked]

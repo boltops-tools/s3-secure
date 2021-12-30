@@ -4,10 +4,10 @@ module S3Secure::PublicAccess
       resp = s3.get_public_access_block(
         bucket: @bucket,
       )
-      $stderr.puts(resp.to_h)
+      say(resp.to_h)
       resp
     rescue Aws::S3::Errors::NoSuchPublicAccessBlockConfiguration
-      $stderr.puts "No public access block configuration found for bucket: #{@bucket}"
+      say "No public access block configuration found for bucket: #{@bucket}"
     end
 
     def blocked?
