@@ -3,6 +3,9 @@
 All notable changes to this project will be documented in this file.
 This project *tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.7.0] - 2023-07-11
+- [#8](https://github.com/tongueroo/s3-secure/pull/8) fix s3.put_bucket_acl with s3.put_bucket_ownership_controls
+
 ## [0.6.1] - 2021-12-30
 - [#6](https://github.com/tongueroo/s3-secure/pull/6) maintain backward compatibility terraspace_plugin_aws
 
