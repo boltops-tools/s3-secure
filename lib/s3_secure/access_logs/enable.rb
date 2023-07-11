@@ -13,6 +13,17 @@ module S3Secure::AccessLogs
         return
       end
 
+      # require to add in order to use put_bucket_acl since this change
+      # https://aws.amazon.com/blogs/aws/amazon-s3-block-public-access-another-layer-of-protection-for-your-accounts-and-buckets/
+      s3.put_bucket_ownership_controls(
+        bucket: @bucket,
+        ownership_controls: { # required
+          rules: [ # required
+            {object_ownership: "ObjectWriter"}, # required, accepts BucketOwnerPreferred, ObjectWriter, BucketOwnerEnforced
+          ],
+        },
+      )
+
       s3.put_bucket_acl(
         bucket: @bucket,
         access_control_policy: @show.access_control_policy_with_log_delivery_permissions,
